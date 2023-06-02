@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+#pong-board {
+    position: relative;
+    height: 500px;
+    width: 800px;
+    border: 2px solid white;
+}
+
+.paddle {
+    position: absolute;
+    height: 100px;
+    width: 15px;
+    background-color: white;
+}
+
+#paddle1 {
+    left: 0;
+}
+
+#paddle2 {
+    right: 0;
+}
+
+#ball {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: white;
+}
+
+#scoreboard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-size: 20px;
+}
+
+#score1, #score2 {
+    margin: 20px;
+}
+
+
+#start-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#start-screen input,
+#start-screen button {
+    margin-top: 20px;
+    display: block;
+}
+
