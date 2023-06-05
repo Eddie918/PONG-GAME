@@ -52,8 +52,8 @@ startButton.addEventListener('click', () => {
     
         // Decreased time reaction for paddle 2
         let ballFuturePosY = ball.offsetTop + (ball.offsetLeft - paddle2.offsetLeft) / direction.x * direction.y;
-        let middleOfPaddle2 = paddle2.offsetTop + paddle2.offsetHeight / 3;
-        let desiredPaddle2PosY = ballFuturePosY - paddle2.offsetHeight / 3;
+        let middleOfPaddle2 = paddle2.offsetTop + paddle2.offsetHeight / 6;
+        let desiredPaddle2PosY = ballFuturePosY - paddle2.offsetHeight / 6;
     
         if (desiredPaddle2PosY < paddle2.offsetTop && paddle2.offsetTop > 0) {
             paddle2.style.top = `${paddle2.offsetTop - paddleSpeed}px`;
