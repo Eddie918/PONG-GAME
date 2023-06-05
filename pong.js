@@ -41,24 +41,28 @@ startButton.addEventListener('click', () => {
     updateScoreboard(); // immediately update the scoreboard
 });
 
-function updatePaddles() {
-    if (keys.ArrowUp && paddle1.offsetTop > 0) {
-        paddle1.style.top = `${paddle1.offsetTop - paddleSpeed}px`;
-    }
-    if (keys.ArrowDown && paddle1.offsetTop < boardHeight - paddle1.offsetHeight) {
-        paddle1.style.top = `${paddle1.offsetTop + paddleSpeed}px`;
-    }
 
-    // Predictive AI for paddle 2
-    let ballFuturePosY = ball.offsetTop + (document.querySelector('#pong-board').offsetWidth - ball.offsetLeft) / direction.x * direction.y;
-    let middleOfPaddle2 = paddle2.offsetTop + paddle2.offsetHeight / 2;
-    if (ballFuturePosY < middleOfPaddle2 && paddle2.offsetTop > 0) {
-        paddle2.style.top = `${paddle2.offsetTop - paddleSpeed}px`;
+    function updatePaddles() {
+        if (keys.ArrowUp && paddle1.offsetTop > 0) {
+            paddle1.style.top = `${paddle1.offsetTop - paddleSpeed}px`;
+        }
+        if (keys.ArrowDown && paddle1.offsetTop < boardHeight - paddle1.offsetHeight) {
+            paddle1.style.top = `${paddle1.offsetTop + paddleSpeed}px`;
+        }
+    
+        // Decreased time reaction for paddle 2
+        let ballFuturePosY = ball.offsetTop + (ball.offsetLeft - paddle2.offsetLeft) / direction.x * direction.y;
+        let middleOfPaddle2 = paddle2.offsetTop + paddle2.offsetHeight / 3;
+        let desiredPaddle2PosY = ballFuturePosY - paddle2.offsetHeight / 3;
+    
+        if (desiredPaddle2PosY < paddle2.offsetTop && paddle2.offsetTop > 0) {
+            paddle2.style.top = `${paddle2.offsetTop - paddleSpeed}px`;
+        }
+        if (desiredPaddle2PosY > paddle2.offsetTop && paddle2.offsetTop < boardHeight - paddle2.offsetHeight) {
+            paddle2.style.top = `${paddle2.offsetTop + paddleSpeed}px`;
+        }
     }
-    if (ballFuturePosY > middleOfPaddle2 && paddle2.offsetTop < boardHeight - paddle2.offsetHeight) {
-        paddle2.style.top = `${paddle2.offsetTop + paddleSpeed}px`;
-    }
-}
+    
 
 function updateBall() {
     let newPosX = ball.offsetLeft + direction.x;
